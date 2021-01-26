@@ -1,0 +1,19 @@
+import java.util.*;  
+public class HelloWorld{
+
+     public static void main(String []args){
+        //System.out.println("Hello World");
+        HashMap<Integer,Integer> bass = new HashMap<Integer,Integer>();
+        System.out.println(fibo(78,bass));
+     }
+     
+     public static int fibo(int n, HashMap<Integer,Integer> bass){
+         if(bass.containsKey(n)) return bass.get(n);
+         if(n<=2){
+             bass.put(n,1);
+         }
+         else       
+            bass.put(n,fibo(n-1,bass)+fibo(n-2,bass));
+         return bass.get(n);
+     }
+}
