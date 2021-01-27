@@ -1,0 +1,25 @@
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        System.out.println("Hello World");
+        int[] a = new int[]{7,14};
+        HashMap<Integer,Boolean> storeHash = new HashMap<Integer,Boolean>();
+        System.out.println(canSum(300,a,storeHash));
+     }
+     
+     public static boolean canSum(int target, int[] nums, HashMap<Integer,Boolean> storeHash){
+         if(storeHash.containsKey(target)) return storeHash.get(target);
+         if(target==0) return true;
+         if(target<0) return false;
+         for(int i =0;i<nums.length;i++){
+             int pass = target-nums[i];
+             //storeHash.put(pass,canSum(target-nums[i],nums,storeHash));
+             if(canSum(pass,nums,storeHash)==true){
+                 storeHash.put(pass,true);
+                return true;}
+         }
+         storeHash.put(target,false);
+         return false;
+     }
+}
